@@ -284,6 +284,101 @@
             margin-bottom: 1rem;
         }
 
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+
+        .success-modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-content {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .success-message {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-close {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-close:hover {
+            background: #cbd5e0;
+            transform: translateY(-1px);
+        }
+
+        .btn-share {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
         /* Register Form */
         .register-form {
             padding: 6rem 0;
@@ -619,6 +714,24 @@
         </div>
     </section>
 
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            <div class="success-icon">🎉</div>
+            <h3 class="success-title">You're In!</h3>
+            <p class="success-message">
+                Thank you for joining our waitlist! We're excited to help transform your child's screen time into learning time. 
+                <br><br>
+                <strong>What's next?</strong><br>
+                We'll email you as soon as the Kids AI Tutor is ready to launch!
+            </p>
+            <div class="success-actions">
+                <button class="btn btn-close" onclick="closeSuccessModal()">Close</button>
+                <button class="btn btn-share" onclick="shareWithFriends()">Share with Friends</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Register Interest Form -->
     <section id="register" class="register-form">
         <div class="container">
@@ -707,8 +820,8 @@
             }
 
             // Initialize Supabase - REPLACE THESE WITH YOUR ACTUAL VALUES
-            const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
+            const SUPABASE_URL = 'YOUR_SUPABASE_URL_HERE'
+            const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY_HERE'
             
             // Only initialize if we have real credentials
             let supabaseClient = null;
@@ -737,7 +850,7 @@
                     
                     // Insert data into Supabase
                     const { data, error } = await supabaseClient
-                        .from('landing_page_registrations')
+                        .from('registrations')
                         .insert([
                             {
                                 parent_name: formData.get('parentName'),
@@ -750,8 +863,8 @@
                         throw error;
                     }
                     
-                    // Success message
-                    alert('Thank you for your interest! We\'ll be in touch soon.');
+                    // Success - show modal instead of alert
+                    showSuccessModal();
                     this.reset();
                     
                 } catch (error) {
