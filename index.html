@@ -737,7 +737,7 @@
                     
                     // Insert data into Supabase
                     const { data, error } = await supabaseClient
-                        .from('registrations')
+                        .from('landing_page_registrations')
                         .insert([
                             {
                                 parent_name: formData.get('parentName'),
