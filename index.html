@@ -154,6 +154,14 @@
             color: #667eea;
         }
 
+        /* Why Choose Section */
+        .why-choose {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
         /* How It Works */
         .how-it-works {
             padding: 6rem 0;
@@ -274,6 +282,58 @@
         .benefit h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+        }
+
+        /* Register Form */
+        .register-form {
+            padding: 6rem 0;
+            background: #f8fafc;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .interest-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-submit {
+            align-self: center;
+            margin-top: 1rem;
         }
 
         /* Testimonials */
@@ -409,7 +469,7 @@
             <ul class="nav-links">
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#register">Register Interest</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
@@ -420,10 +480,35 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Turn Everyday Screen Time into Fun Learning Time</h1>
-                <p>Personalized AI-powered challenges that keep your child curious, engaged, and improving—while you track their progress effortlessly.</p>
+                <p>An AI tutor that creates personalized challenges to keep your child curious, engaged, and improving—while you track their progress effortlessly.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">Start Free</a>
+                    <a href="#register" class="btn btn-primary">Register Your Interest</a>
                     <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our AI Tutor -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our AI Tutor?</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <h3>🌟 Build Confidence</h3>
+                    <p>Watch your child build confidence in learning with every completed challenge.</p>
+                </div>
+                <div class="benefit">
+                    <h3>🔍 Turn Curiosity into Progress</h3>
+                    <p>Transform natural curiosity into measurable daily progress across all subjects.</p>
+                </div>
+                <div class="benefit">
+                    <h3>🤖 Safe Learning Companion</h3>
+                    <p>Give your child a safe, engaging learning companion that's always patient and encouraging.</p>
+                </div>
+                <div class="benefit">
+                    <h3>📱 Screen Time = Skill Time</h3>
+                    <p>Finally, screen time that makes you feel good as a parent. Every minute counts toward growth.</p>
                 </div>
             </div>
         </div>
@@ -515,51 +600,46 @@
             <h2 class="section-title">Why Parents Love It</h2>
             <div class="benefits-grid">
                 <div class="benefit">
-                    <h3>🌟 Build Confidence</h3>
-                    <p>Watch your child build confidence in learning with every completed challenge.</p>
+                    <h3>Peace of Mind</h3>
+                    <p>Know that every minute of screen time is productive and educational.</p>
                 </div>
                 <div class="benefit">
-                    <h3>🔍 Turn Curiosity into Progress</h3>
-                    <p>Transform natural curiosity into measurable daily progress across all subjects.</p>
+                    <h3>Real Progress</h3>
+                    <p>See tangible improvements in your child's skills and confidence.</p>
                 </div>
                 <div class="benefit">
-                    <h3>🤖 Safe Learning Companion</h3>
-                    <p>Give your child a safe, engaging learning companion that's always patient and encouraging.</p>
+                    <h3>No Screen Time Guilt</h3>
+                    <p>Transform worry about device usage into pride in your child's learning.</p>
                 </div>
                 <div class="benefit">
-                    <h3>📱 Screen Time = Skill Time</h3>
-                    <p>Finally, screen time that makes you feel good as a parent. Every minute counts toward growth.</p>
+                    <h3>Effortless Parenting</h3>
+                    <p>Let AI handle the teaching while you focus on celebrating their achievements.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
+    <!-- Register Interest Form -->
+    <section id="register" class="register-form">
         <div class="container">
-            <h2 class="section-title">What Parents Are Saying</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="testimonial-content">
-                        My son actually looks forward to his challenges every day. It's been a game-changer for making learning fun!
+            <h2 class="section-title">Join the Waitlist</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; color: #718096;">Be among the first to give your child the gift of personalized learning</p>
+            <div class="form-container">
+                <form id="interestForm" class="interest-form">
+                    <div class="form-group">
+                        <label for="parentName">Your Name</label>
+                        <input type="text" id="parentName" name="parentName" required>
                     </div>
-                    <div class="testimonial-author">– Sarah, parent of a 7-year-old</div>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="testimonial-content">
-                        The AI tutor feels like a friend who truly understands my child's needs and learning style.
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    <div class="testimonial-author">– Mark, parent of a 6-year-old</div>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="testimonial-content">
-                        Finally, an app that makes me feel good about screen time. My daughter is learning so much!
+                    <div class="form-group">
+                        <label for="reason">Why are you interested in an AI tutor for your child?</label>
+                        <textarea id="reason" name="reason" rows="4" placeholder="Tell us about your child's learning needs or what excites you about AI-powered education..."></textarea>
                     </div>
-                    <div class="testimonial-author">– Jessica, parent of a 5-year-old</div>
-                </div>
+                    <button type="submit" class="btn btn-primary form-submit">Register My Interest</button>
+                </form>
             </div>
         </div>
     </section>
@@ -612,11 +692,84 @@
         <div class="container">
             <h2>Make Learning Fun. Make Progress Visible.</h2>
             <p>Start today and turn every challenge into growth for your child.</p>
-            <a href="#" class="btn btn-primary" style="background: white; color: #ff6b6b; font-size: 1.2rem; padding: 1.2rem 2.5rem;">Get Started Free</a>
+            <a href="#register" class="btn btn-primary" style="background: white; color: #ff6b6b; font-size: 1.2rem; padding: 1.2rem 2.5rem;">Register Your Interest</a>
         </div>
     </section>
 
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
+        // Wait for page to load before initializing Supabase
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if Supabase is loaded
+            if (typeof window.supabase === 'undefined') {
+                console.error('Supabase library not loaded');
+                return;
+            }
+
+            // Initialize Supabase - REPLACE THESE WITH YOUR ACTUAL VALUES
+            const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
+            
+            // Only initialize if we have real credentials
+            let supabaseClient = null;
+            if (SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY_HERE') {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+
+            // Form submission
+            document.getElementById('interestForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitButton = this.querySelector('.form-submit');
+                const originalText = submitButton.textContent;
+                
+                // Show loading state
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                
+                try {
+                    const formData = new FormData(this);
+                    
+                    // Check if Supabase is properly configured
+                    if (!supabaseClient) {
+                        throw new Error('Supabase not configured. Please add your credentials.');
+                    }
+                    
+                    // Insert data into Supabase
+                    const { data, error } = await supabaseClient
+                        .from('registrations')
+                        .insert([
+                            {
+                                parent_name: formData.get('parentName'),
+                                email: formData.get('email'),
+                                reason: formData.get('reason')
+                            }
+                        ]);
+                    
+                    if (error) {
+                        throw error;
+                    }
+                    
+                    // Success message
+                    alert('Thank you for your interest! We\'ll be in touch soon.');
+                    this.reset();
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again or contact us directly.');
+                } finally {
+                    // Reset button
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        });
+
+        // Initialize Supabase
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL_HERE'
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY_HERE'
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
             const symbol = element.querySelector('span');
@@ -674,6 +827,7 @@
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
+
     </script>
 </body>
 </html>
