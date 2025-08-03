@@ -811,25 +811,47 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // Wait for page to load before initializing Supabase
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Success Modal Functions
+        function showSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('show');
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('show');
+        }
+
+        function shareWithFriends() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Kids AI Tutor - Turn Screen Time into Learning Time',
+                    text: 'Check out this amazing AI tutor for kids! It turns screen time into productive learning time.',
+                    url: window.location.href,
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareText = `Check out Kids AI Tutor - Turn Screen Time into Learning Time! ${window.location.href}`;
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+
+        // Form submission
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if Supabase is loaded
-            if (typeof window.supabase === 'undefined') {
-                console.error('Supabase library not loaded');
-                return;
-            }
-
-            // Initialize Supabase - REPLACE THESE WITH YOUR ACTUAL VALUES
-            const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
-            
-            // Only initialize if we have real credentials
-            let supabaseClient = null;
-            if (SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY_HERE') {
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            }
-
-            // Form submission
             document.getElementById('interestForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -842,11 +864,6 @@
                 
                 try {
                     const formData = new FormData(this);
-                    
-                    // Check if Supabase is properly configured
-                    if (!supabaseClient) {
-                        throw new Error('Supabase not configured. Please add your credentials.');
-                    }
                     
                     // Insert data into Supabase
                     const { data, error } = await supabaseClient
@@ -877,11 +894,6 @@
                 }
             });
         });
-
-        // Initialize Supabase
-        const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
