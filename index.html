@@ -821,7 +821,7 @@
 
             // Initialize Supabase - REPLACE THESE WITH YOUR ACTUAL VALUES
             const SUPABASE_URL = 'https://elnltfhjuskkyjkdfiph.supabase.co'
-            const SUPABASE_ANON_KEY = 'YeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsbmx0ZmhqdXNra3lqa2RmaXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNDg5NzUsImV4cCI6MjA2ODYyNDk3NX0.-kzNJb1W8M_VCBCH7w3LUsZ7VswWh6wgWM55NGMq2WQ'
             
             // Only initialize if we have real credentials
             let supabaseClient = null;
@@ -850,7 +850,7 @@
                     
                     // Insert data into Supabase
                     const { data, error } = await supabaseClient
-                        .from('registrations')
+                        .from('landing_page_registrations')
                         .insert([
                             {
                                 parent_name: formData.get('parentName'),
